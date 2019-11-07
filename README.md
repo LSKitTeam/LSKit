@@ -22,7 +22,7 @@ pod 'LSKit'
 
 ## Author
 
-542634994@qq.com, lyson.lai@gwtsz.net
+Lyson, Qingshan
 
 ## License
 
