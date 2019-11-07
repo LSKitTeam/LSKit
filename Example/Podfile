@@ -1,0 +1,15 @@
+use_frameworks!
+
+platform :ios, '8.0'
+
+target 'LSKit_Example' do
+  pod 'LSKit', :path => '../'
+  pod 'OHHTTPStubs'
+  pod 'ReactiveObjC'
+  
+  target 'LSKit_Tests' do
+    inherit! :search_paths
+    
+    pod 'FBSnapshotTestCase'
+  end
+end

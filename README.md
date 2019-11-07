@@ -1,34 +1,29 @@
 # LSKit
 
+[![CI Status](https://img.shields.io/travis/542634994@qq.com/LSKit.svg?style=flat)](https://travis-ci.org/542634994@qq.com/LSKit)
+[![Version](https://img.shields.io/cocoapods/v/LSKit.svg?style=flat)](https://cocoapods.org/pods/LSKit)
+[![License](https://img.shields.io/cocoapods/l/LSKit.svg?style=flat)](https://cocoapods.org/pods/LSKit)
+[![Platform](https://img.shields.io/cocoapods/p/LSKit.svg?style=flat)](https://cocoapods.org/pods/LSKit)
 
+## Example
 
-#### 提供应用内语言语言切换
+To run the example project, clone the repo, and run `pod install` from the Example directory first.
 
+## Requirements
 
-#### 提供AFNetworking二次封装
+## Installation
 
+LSKit is available through [CocoaPods](https://cocoapods.org). To install
+it, simply add the following line to your Podfile:
 
-#### 提供组件解耦方案
+```ruby
+pod 'LSKit'
+```
 
+## Author
 
-####便捷工具及分类 
+542634994@qq.com, lyson.lai@gwtsz.net
 
+## License
 
-##组件解耦
-
-LSMQMessageListManager 消息通信管理中间件
-
-LSRouter 跳转路由
-
-LSPluginManager 组件管理器
-
-
-##语言切换
-
-LSLabelServer 应用内语言切换
-
-
-##AFNetworking网络请求二次封装
-LSRequestModel 请求Model
-
-
+LSKit is available under the MIT license. See the LICENSE file for more info.
