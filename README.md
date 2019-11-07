@@ -11,6 +11,8 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
+Above iOS 8.0
+
 ## Installation
 
 LSKit is available through [CocoaPods](https://cocoapods.org). To install
