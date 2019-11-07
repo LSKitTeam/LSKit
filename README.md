@@ -22,7 +22,9 @@ pod 'LSKit'
 
 ## Author
 
-Lyson, Qingshan
+@Lyson
+
+@Qingshan
 
 ## License
 
