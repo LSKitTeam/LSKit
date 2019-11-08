@@ -76,7 +76,7 @@
 @property (nonatomic, strong) LSReactKVOTrampoline *trampoline;
 @property (nonatomic, copy) NSString *keyPath;
 @property (nonatomic, weak) NSObject *observe;
-@property (nonatomic, assign) BOOL isTopic;
+@property (nonatomic, assign) BOOL isGlobal;
 @property (nonatomic, copy) BOOL (^mapBlock)(id value);
 @property (nonatomic, assign) NSInteger skipCount;
 @property (nonatomic, assign) NSInteger sendCount;
@@ -90,17 +90,17 @@
     LSReactSignal *signal = [LSReactSignal new];
     signal.observe = observe;
     signal.keyPath = keypath;
-    signal.isTopic = NO;
+    signal.isGlobal = NO;
     return signal;
 }
 
-+ (LSReactSignal *)createSignalWithTopic:(NSString *)keypath
++ (LSReactSignal *)createSignalWithGlobalKeyPath:(NSString *)keypath
                                  observe:(__weak NSObject *)observe {
 
     LSReactSignal *signal = [LSReactSignal new];
     signal.observe = observe;
     signal.keyPath = keypath;
-    signal.isTopic = YES;
+    signal.isGlobal = YES;
     return signal;
 }
 
@@ -123,7 +123,7 @@
         [[LSReactKVOTrampoline alloc] initWithSubscribe:self.subscribeObj
                                           observeTarget:self.observe
                                                 keypath:self.keyPath
-                                                isTopic:self.isTopic];
+                                                isGlobal:self.isGlobal];
     self.trampoline = poline;
 }
 

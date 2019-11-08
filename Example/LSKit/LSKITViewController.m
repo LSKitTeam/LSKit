@@ -39,20 +39,20 @@
         NSLog(@"change value : %@",value);
     }];
     
-    [[self.ttTestObj ls_valuesForTopic:@"testString"] subscribe:^(id value) {
+    [[self.ttTestObj ls_valuesForGlobalKeyPath:@"testString"] subscribe:^(id value) {
         NSLog(@"topic value1 : %@",value);
     }];
     
-    [[self.ttTestObj ls_valuesForTopic:@"testString"] subscribe:^(id value) {
+    [[self.ttTestObj ls_valuesForGlobalKeyPath:@"testString"] subscribe:^(id value) {
         NSLog(@"topic value2 : %@",value);
     }];
     
     
-    [[self ls_valuesForTopic:@"testString"] subscribe:^(id value) {
+    [[self ls_valuesForGlobalKeyPath:@"testString"] subscribe:^(id value) {
         NSLog(@"topic value3 : %@",value);
     }];
     
-    [[self.ttTestObj ls_valuesForTopic:@"testString1"] subscribe:^(id value) {
+    [[self.ttTestObj ls_valuesForGlobalKeyPath:@"testString1"] subscribe:^(id value) {
         NSLog(@"end : %@",[NSDate date]);
         NSLog(@"topic value4 : %@",value);
     }];

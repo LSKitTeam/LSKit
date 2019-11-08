@@ -13,8 +13,8 @@
 
 /// 发送订阅消息
 /// @param value value
-/// @param topic topic
-- (void)sendValue:(id)value forKey:(NSString *)topic;
+/// @param globalKeypath 全局的监听
+- (void)sendValue:(id)value forKey:(NSString *)globalKeyPath;
 
 /// 添加监听
 /// @param observer 监听主体对象
@@ -24,8 +24,8 @@
 /// 添加监听
 /// @param observer 监听主体对象
 /// @param context 上下文
-/// @param topic topic
-- (void)addObserver:(__weak NSObject *)observer forContext:(void *)context topic:(NSString*)topic;
+/// @param globalKeyPath globalKeypath 全局的
+- (void)addObserver:(__weak NSObject *)observer forContext:(void *)context globalKeyPath:(NSString*)globalKeyPath;
 
 /// 移除监听
 /// @param observer 监听主体对象
@@ -35,9 +35,9 @@
 /// 移除监听
 /// @param observer observer
 /// @param context context
-/// @param topic topic
+/// @param globalKeyPath 全局的
 - (void)removeObserver:(NSObject *)observer
             forContext:(void *)context
-                 topic:(NSString *)topic;
+                 globalKeyPath:(NSString *)globalKeyPath;
 
 @end

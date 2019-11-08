@@ -17,7 +17,7 @@
 + (LSReactSignal *)createSignalWithKeyPath:(NSString *)keypath
                                    observe:(__weak NSObject *)observe;
 
-+ (LSReactSignal *)createSignalWithTopic:(NSString *)keypath
++ (LSReactSignal *)createSignalWithGlobalKeyPath:(NSString *)keypath
                                  observe:(__weak NSObject *)observe;
 /// 订阅数据
 /// @param subscribe subscribe

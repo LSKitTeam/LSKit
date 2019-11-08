@@ -20,17 +20,17 @@
 /// @param subscribe subscribe
 /// @param weakTarget weakTarget
 /// @param keypath keypath
-//  @param isTopic 话题订阅
+//  @param isGlobal 话题订阅 全局的
 - (instancetype)initWithSubscribe:(LSReactSubscribe *)subscribe
                     observeTarget:(__weak id)weakTarget
                           keypath:(NSString *)keypath
-                          isTopic:(BOOL)isTopic {
+                          isGlobal:(BOOL)isGlobal {
     if (self = [super init]) {
 
         self.subscribe = subscribe;
         self.weakTarget = weakTarget;
         self.keyPath = keypath;
-        _isTopic = isTopic;
+        _isGlobal = isGlobal;
 
         NSObject *strongTarget = weakTarget;
 
@@ -38,7 +38,7 @@
                                              NSKeyValueObservingOptionOld |
                                              NSKeyValueObservingOptionInitial;
 
-        if (strongTarget && !isTopic) {
+        if (strongTarget && !isGlobal) {
 
             [LSReactKVOProxy.shareInstance addObserver:self
                                             forContext:(__bridge void *) self];
@@ -49,7 +49,7 @@
         } else {
             [LSReactKVOProxy.shareInstance addObserver:self
                                             forContext:(__bridge void *) self
-                                                 topic:self.keyPath];
+                                                 globalKeyPath:self.keyPath];
         }
     }
     return self;

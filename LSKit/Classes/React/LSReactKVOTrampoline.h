@@ -10,7 +10,7 @@
 
 @interface LSReactKVOTrampoline : NSObject
 
-@property (nonatomic, assign , readonly) BOOL isTopic;
+@property (nonatomic, assign , readonly) BOOL isGlobal;
 /// 初始化
 /// @param subscribe subscribe
 /// @param weakTarget weakTarget
@@ -19,5 +19,5 @@
 - (instancetype)initWithSubscribe:(LSReactSubscribe *)subscribe
                     observeTarget:(__weak id)weakTarget
                           keypath:(NSString *)keypath
-                          isTopic:(BOOL)isTopic;
+                          isGlobal:(BOOL)isGlobal;
 @end

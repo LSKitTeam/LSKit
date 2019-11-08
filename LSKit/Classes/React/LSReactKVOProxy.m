@@ -71,15 +71,15 @@
 /// 添加监听
 /// @param observer 监听主体对象
 /// @param context 上下文
-/// @param topic topic
+/// @param globalKeypath global全局的
 - (void)addObserver:(__weak NSObject *)observer
          forContext:(void *)context
-              topic:(NSString *)topic {
+              globalKeyPath:(NSString *)globalKeyPath {
 
     NSValue *valueContext = [NSValue valueWithPointer:context];
 
     NSString *topicKey =
-        [NSString stringWithFormat:@"%@_topic_%@_topic", valueContext, topic];
+        [NSString stringWithFormat:@"%@_topic_%@_topic", valueContext, globalKeyPath];
 
     dispatch_sync(self.queue, ^{
         [self.subscribes setObject:observer forKey:topicKey];
@@ -89,12 +89,12 @@
 /// 移除监听
 /// @param observer observer
 /// @param context context
-/// @param topic topic
+/// @param globalKeyPath globalKeyPath
 - (void)removeObserver:(NSObject *)observer
             forContext:(void *)context
-                 topic:(NSString *)topic {
+                 globalKeyPath:(NSString *)globalKeyPath {
 
-    NSString *topicKey = [NSString stringWithFormat:@"_topic_%@_topic", topic];
+    NSString *topicKey = [NSString stringWithFormat:@"_topic_%@_topic", globalKeyPath];
 
     dispatch_sync(self.queue, ^{
 
@@ -133,10 +133,10 @@
 
 /// 发送订阅消息
 /// @param value value
-/// @param topic topic
-- (void)sendValue:(id)value forKey:(NSString *)topic {
+/// @param globalKeypath globalKeypath
+- (void)sendValue:(id)value forKey:(NSString *)globalKeyPath {
 
-    NSString *topicKey = [NSString stringWithFormat:@"_topic_%@_topic", topic];
+    NSString *topicKey = [NSString stringWithFormat:@"_topic_%@_topic", globalKeyPath];
 
     dispatch_sync(self.queue, ^{
 

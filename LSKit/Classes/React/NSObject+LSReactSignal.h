@@ -18,7 +18,7 @@
 
 /// object 订阅话题
 /// @param keyPath keypath
-- (LSReactSignal *)ls_valuesForTopic:(NSString *)keyPath;
+- (LSReactSignal *)ls_valuesForGlobalKeyPath:(NSString *)keyPath;
 
 /// 发送订阅话题
 /// @param keyPath 话题

@@ -46,7 +46,7 @@
         NSLog(@"changeValue :%@", value);
     }];
     
-    [[self.testObj ls_valuesForTopic:@"testString2"] subscribe:^(id value) {
+    [[self.testObj ls_valuesForGlobalKeyPath:@"testString2"] subscribe:^(id value) {
 
         NSLog(@"topicValue :%@", value);
     }];

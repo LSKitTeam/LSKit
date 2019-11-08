@@ -81,10 +81,10 @@ static const char signalArray;
     return signal;
 }
 
-- (LSReactSignal *)ls_valuesForTopic:(NSString *)keyPath{
+- (LSReactSignal *)ls_valuesForGlobalKeyPath:(NSString *)keyPath{
 
     LSReactSignal *signal =
-        [LSReactSignal createSignalWithTopic:keyPath observe:self];
+        [LSReactSignal createSignalWithGlobalKeyPath:keyPath observe:self];
 
     NSMutableArray *signals = self.signalsArray;
     if (!signals) {
