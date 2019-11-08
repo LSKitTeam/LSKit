@@ -13,7 +13,7 @@
 
 /// 发送订阅消息
 /// @param value value
-/// @param globalKeypath 全局的监听
+/// @param globalKeyPath 全局的监听
 - (void)sendValue:(id)value forKey:(NSString *)globalKeyPath;
 
 /// 添加监听
