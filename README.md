@@ -19,12 +19,13 @@ LSKit is available through [CocoaPods](https://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
-!pod 'LSKit'
+
 ```
 
 ##使用方式
 
 ###KVO属性监听
+
 	[[self ls_valuesForKeyPath:@"xxxx"] subscribe:^(id value) {
         NSLog(@"change value : %@",value);
     }];
