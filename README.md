@@ -40,6 +40,14 @@ it, simply add the following line to your Podfile:
 
     //其中xxxx为全局监听字符串
 
+####网络请求 
+	
+	二次封装AFNetworking,通过分类的形式快速使用请求
+
+	NSObject+LSNetworkRequest
+
+	请求生命周期与调用类关联，当调用类被释放时，将自动调用ls_cancelAllRequest方法取消当前类的所有请求
+
 ## Author
 
 @Lyson
