@@ -14,6 +14,7 @@
 #import "NSDictionary+LSKit.h"
 #import "NSObject+LSKit.h"
 #import "UIDevice+LSKit.h"
+#import "NSObject+Toast.h"
 #import "UINavigationController+LSKit.h"
 
 #import "LSBaseRequest.h"

@@ -19,33 +19,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wrh-b5-r1W">
-                                <rect key="frame" x="92" y="157" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="kvo"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hjp-zI-RfS">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <connections>
-                                    <action selector="itemClick:" destination="whP-gf-Uak" eventType="touchUpInside" id="koe-A2-kCv"/>
+                                    <outlet property="dataSource" destination="whP-gf-Uak" id="5KG-8n-mPT"/>
+                                    <outlet property="delegate" destination="whP-gf-Uak" id="67Z-cN-NNv"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lqy-Ps-mGX">
-                                <rect key="frame" x="255" y="156" width="42" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="realse"/>
-                                <connections>
-                                    <action selector="realseClick:" destination="whP-gf-Uak" eventType="touchUpInside" id="g0a-ud-peO"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Sh-ht-EgT">
-                                <rect key="frame" x="170" y="157" width="35" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="topic"/>
-                                <connections>
-                                    <action selector="releaseSignal:" destination="whP-gf-Uak" eventType="touchUpInside" id="lkL-cF-WW9"/>
-                                </connections>
-                            </button>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Mvr-aV-6Um" firstAttribute="top" secondItem="hjp-zI-RfS" secondAttribute="bottom" id="Bqn-VB-2Ui"/>
+                            <constraint firstAttribute="trailing" secondItem="hjp-zI-RfS" secondAttribute="trailing" id="H5z-Jy-obl"/>
+                            <constraint firstItem="hjp-zI-RfS" firstAttribute="leading" secondItem="TpU-gO-2f1" secondAttribute="leading" id="OxN-5X-3D0"/>
+                            <constraint firstItem="hjp-zI-RfS" firstAttribute="top" secondItem="uEw-UM-LJ8" secondAttribute="bottom" id="ZgC-oU-hnz"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="hjp-zI-RfS" id="3S5-pw-Wx5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tc2-Qw-aMS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

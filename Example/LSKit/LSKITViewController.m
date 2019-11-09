@@ -16,72 +16,89 @@
 
 @implementation TestObj
 
-
 @end
 
 #import "LSKITViewController.h"
 
-@interface LSKITViewController ()
-
+@interface LSKITViewController () <UITableViewDelegate, UITableViewDataSource>
+@property (nonatomic, strong) NSMutableArray *dataSource;
 @property (nonatomic, strong) TestObj *ttTestObj;
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
 @end
 
 @implementation LSKITViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-    
+
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
     self.ttTestObj = [TestObj new];
-    
-    [[self.ttTestObj ls_valuesForKeyPath:@"testString"] subscribe:^(id value) {
-//        NSLog(@"end : %@",[NSDate date]);
-        NSLog(@"change value : %@",value);
-    }];
-    
-    [[self.ttTestObj ls_valuesForGlobalKeyPath:@"testString"] subscribe:^(id value) {
-        NSLog(@"topic value1 : %@",value);
-    }];
-    
-    [[self.ttTestObj ls_valuesForGlobalKeyPath:@"testString"] subscribe:^(id value) {
-        NSLog(@"topic value2 : %@",value);
-    }];
-    
-    
-    [[self ls_valuesForGlobalKeyPath:@"testString"] subscribe:^(id value) {
-        NSLog(@"topic value3 : %@",value);
-    }];
-    
-    [[self.ttTestObj ls_valuesForGlobalKeyPath:@"testString1"] subscribe:^(id value) {
-        NSLog(@"end : %@",[NSDate date]);
-        NSLog(@"topic value4 : %@",value);
-    }];
-    
-    self.ttTestObj.testString = @"22222";
-	// Do any additional setup after loading the view, typically from a nib.
 }
 
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
--(IBAction)itemClick:(id)sender{
+    UITableViewCell *cell =
+        [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
+
+    NSString *title = [self.dataSource objectAtIndex:indexPath.row];
+
+    cell.textLabel.text = title;
+
+    return cell;
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.dataSource.count;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    NSString *title = [self.dataSource objectAtIndex:indexPath.row];
+    
+    if ([title isEqualToString:@"Toast-Bottom-default"]) {
+        
+        [self ls_toast:@"测试Toas提示框"];
+    }else if ([title isEqualToString:@"Toast-Bottom-duration"]) {
+        
+        [self ls_toast:@"测试Toas提示框-5-5-5-55-5" duration:5];
+    }
     
     
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+-(NSMutableArray *)dataSource{
+    
+    if (!_dataSource) {
+        _dataSource = [NSMutableArray arrayWithCapacity:0];
+        
+        [_dataSource addObject:@"Toast-Bottom-default"];
+        
+        [_dataSource addObject:@"Toast-Bottom-duration"];
+    }
+    
+    return _dataSource;
+}
+
+- (IBAction)itemClick:(id)sender {
+
     self.ttTestObj.testString = @"1111";
 }
 
+- (IBAction)releaseSignal:(id)sender {
 
--(IBAction)releaseSignal:(id)sender{
-    
-    NSLog(@"start : %@",[NSDate date]);
+    NSLog(@"start : %@", [NSDate date]);
     [self.ttTestObj ls_sendSignal:@"testString1" values:@"testValue"];
 }
 
--(IBAction)realseClick:(id)sender{
-    
+- (IBAction)realseClick:(id)sender {
+
     self.ttTestObj = nil;
 }
 
-- (void)didReceiveMemoryWarning
-{
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
