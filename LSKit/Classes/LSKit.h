@@ -8,6 +8,7 @@
 #ifndef LSKit_h
 #define LSKit_h
 
+#import "NSDate+LSKit.h"
 #import "NSError+LSKit.h"
 #import "NSData+LSKit.h"
 #import "NSString+LSKit.h"
