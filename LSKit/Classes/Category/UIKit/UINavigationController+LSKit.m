@@ -23,7 +23,7 @@ static inline UIImage  *lsColorConversionImage(UIColor * color) {
 
 /// 设置导航栏颜色
 /// @param color color
-/// @param alpha alpha 
+/// @param alpha alpha
 - (void)ls_setNavigationBarColor:(UIColor *)color alpha:(CGFloat)alpha {
     self.navigationBar.shadowImage = [[UIImage alloc] init];
     self.navigationBar.backgroundColor = [UIColor clearColor];

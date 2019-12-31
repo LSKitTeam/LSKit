@@ -160,18 +160,18 @@ static const char networksArray;
         SEL sel = NSSelectorFromString(@"dealloc");
         Method originalMethod = class_getInstanceMethod(self, sel);
         Method swizzledMethod =
-            class_getInstanceMethod(self, @selector(ls_dealloc));
+            class_getInstanceMethod(self, @selector(ls_NetworkDealloc));
         method_exchangeImplementations(originalMethod, swizzledMethod);
     });
 }
 
-- (void)ls_dealloc {
+- (void)ls_NetworkDealloc {
 
     if (self.networks || [self.networks allObjects] > 0) {
         [self ls_cancelAllRequest];
     }
     
-    [self ls_dealloc];
+    [self ls_NetworkDealloc];
 }
 
 @end
