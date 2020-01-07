@@ -11,6 +11,26 @@
 
 @implementation NSString (LSKit)
 
+/// 数字正则
+- (BOOL)ls_isNumber {
+    if (self.length == 0) return NO;
+    NSString *isNumber = @"^[0-9]*$";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", isNumber];
+    return [predicate evaluateWithObject:self];
+}
+
+/// 字母正则
+- (BOOL)ls_isLetters {
+    if (self.length == 0) return NO;
+    NSString *phoneRegex = @"^[A-Za-z]+$";
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", phoneRegex];
+    return [predicate evaluateWithObject:self];
+}
+
+/// 判断是否可用
+- (BOOL)ls_isAvailable {
+    return (self && [self isKindOfClass:[NSString class]] && self.length != 0 && ![self isKindOfClass:[NSNull class]] && self != NULL && ![self isEqualToString:@"<null>"] && ![self isEqualToString:@"(null)"]);
+}
 
 /**
  URL编码
@@ -20,19 +40,17 @@
 - (NSString *)ls_urlEncodedString {
     //!*'();:@&=+$,/?%#[]
     NSCharacterSet *charSet = [[NSCharacterSet characterSetWithCharactersInString:@"!\" #$%&'()*+,/:;<=>?@[\\]^`{|}~"] invertedSet];
-    
+
     NSString *result = [self stringByAddingPercentEncodingWithAllowedCharacters:charSet];
     return result;
 }
-
 
 /**
  URL解码
 
  @return URL解码
  */
-- (NSString*)ls_urlDecodedString{
-    
+- (NSString *)ls_urlDecodedString {
     if ([self respondsToSelector:@selector(stringByRemovingPercentEncoding)]) {
         return [self stringByRemovingPercentEncoding];
     } else {
@@ -42,11 +60,11 @@
         NSString *decoded = [self stringByReplacingOccurrencesOfString:@"+"
                                                             withString:@" "];
         decoded = (__bridge_transfer NSString *)
-        CFURLCreateStringByReplacingPercentEscapesUsingEncoding(
-                                                                NULL,
-                                                                (__bridge CFStringRef)decoded,
-                                                                CFSTR(""),
-                                                                en);
+            CFURLCreateStringByReplacingPercentEscapesUsingEncoding(
+            NULL,
+            (__bridge CFStringRef)decoded,
+            CFSTR(""),
+            en);
         return decoded;
 #pragma clang diagnostic pop
     }
@@ -58,15 +76,14 @@
  @return MD5
  */
 - (NSString *)ls_md5EncodeString {
-    
     const char *cStr = [self UTF8String];
     unsigned char digest[CC_MD5_DIGEST_LENGTH];
-    CC_MD5(cStr, (CC_LONG) self.length, digest);
+    CC_MD5(cStr, (CC_LONG)self.length, digest);
     NSMutableString *result = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH * 2];
     for (int i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
         [result appendFormat:@"%02x", digest[i]];
     }
-    
+
     return result;
 }
 
@@ -77,7 +94,6 @@
  @return YES NO
  */
 + (BOOL)ls_empty:(NSString *)value {
-
     value = [value ls_stringByTrim];
 
     if (!value) {
@@ -88,6 +104,7 @@
     }
     return value.length == 0;
 }
+
 /**
  去除首尾空格
 

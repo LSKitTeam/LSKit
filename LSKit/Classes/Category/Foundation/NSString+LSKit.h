@@ -40,23 +40,32 @@
 
 /**
  MD5
- 
+
  @return MD5
  */
 - (NSString *)ls_md5EncodeString;
 
 /**
  URL编码
- 
+
  @return URL编码
  */
 - (NSString *)ls_urlEncodedString;
 
 /**
  URL解码
- 
+
  @return URL解码
  */
-- (NSString*)ls_urlDecodedString;
+- (NSString *)ls_urlDecodedString;
+
+/// 数字正则
+- (BOOL)ls_isNumber;
+
+/// 字母正则
+- (BOOL)ls_isLetters;
+
+/// 判断是否可用
+- (BOOL)ls_isAvailable;
 
 @end
